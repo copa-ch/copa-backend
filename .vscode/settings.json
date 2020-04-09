@@ -1,0 +1,22 @@
+{
+  "workbench.iconTheme": "material-icon-theme",
+  "material-icon-theme.activeIconPack": "nest",
+  "material-icon-theme.folders.associations": {
+    "context": "app",
+    "resolvers": "controller",
+    "types": "class",
+    "entities": "class",
+    "migrations": "import",
+    "seeds": "helper",
+    "factories": "lib",
+    "dto": "Docs"
+  },
+  "material-icon-theme.files.associations": {
+    "*.repository.ts": "Nest-gateway",
+    "*.entity.ts": "Nest-pipe",
+    "*.config.ts": "Settings",
+    "*.dto.ts": "Document",
+    "*.mail.ts": "Email",
+    "main.ts": "Nodejs"
+  }
+}

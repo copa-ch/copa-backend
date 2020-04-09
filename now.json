@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "dist/main.js",
+      "use": "@now/node"
+    }
+  ],
+  "routes": [
+    {
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "X-Request-ID, X-Requested-With, Content-Type, Accept"
+      },
+      "src": "/(.*)",
+      "dest": "dist/main.js"
+    }
+  ],
+  "env": {
+    "DB_DIALECT": "@db_dialect",
+    "DB_HOST": "@db_host",
+    "DB_PORT": "@db_port",
+    "DB_DATABASE": "@db_database",
+    "DB_USERNAME": "@db_username",
+    "DB_PASSWORD": "@db_password",
+    "MAIL_USERNAME": "@mail_username",
+    "MAIL_PASSWORD": "@mail_password"
+  }
+}

@@ -1,0 +1,7 @@
+.vscode
+.editorconfig
+.env
+.env.test
+.releaserc
+.sgcrc
+.eslintrc.js
