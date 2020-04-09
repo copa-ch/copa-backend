@@ -1,7 +1,7 @@
 {
   "name": "copa-backend",
   "title": "COPA API",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "COPA is tournament managment tool",
   "license": "Apache-2.0",
   "authors": [

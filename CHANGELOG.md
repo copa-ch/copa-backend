@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/copa-ch/copa-backend/compare/v1.0.0...v1.0.1) (2020-04-09)
+
+
+### Bug Fixes
+
+* **mail:** fix banner image url ([6beaf3f](https://github.com/copa-ch/copa-backend/commit/6beaf3fc40a02feaadac5c149946a02ce7b4aa3b))
+
 # 1.0.0 (2020-04-09)
 
 
