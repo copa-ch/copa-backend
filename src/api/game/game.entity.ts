@@ -5,7 +5,6 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from "typeorm"
-
 import { DateAudit } from "../shared/entity/date-audit.entity"
 import { Team } from "../team/team.entity"
 import { Tournament } from "../tournament/tournament.entity"

@@ -1,4 +1,4 @@
-export default {
+export default () => ({
   /*
   |--------------------------------------------------------------------------
   | Application Meta Data
@@ -33,4 +33,4 @@ export default {
   |
   */
   clientUrl: process.env.CLIENT_URL || "http://localhost:8080/tournament",
-}
+})

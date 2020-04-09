@@ -12,9 +12,9 @@ import MailConfig from "./mail.config"
         process.env.NODE_ENV ? `.${process.env.NODE_ENV}` : ""
       }`,
       load: [
-        () => ({ app: AppConfig }),
-        () => ({ database: DatabaseConfig }),
-        () => ({ mail: MailConfig }),
+        () => ({ app: AppConfig() }),
+        () => ({ database: DatabaseConfig() }),
+        () => ({ mail: MailConfig() }),
       ],
     }),
   ],
