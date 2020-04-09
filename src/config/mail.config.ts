@@ -1,4 +1,4 @@
-export default {
+export default () => ({
   /*
   |--------------------------------------------------------------------------
   | Mail Configurations
@@ -14,4 +14,4 @@ export default {
   from: process.env.MAIL_FROM || '"🏆 COPA" <copa@w3tec.ch>',
   username: process.env.MAIL_USERNAME,
   password: process.env.MAIL_PASSWORD,
-}
+})

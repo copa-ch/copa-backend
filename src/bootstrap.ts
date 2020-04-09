@@ -6,7 +6,7 @@ import * as compression from "compression"
 import * as rateLimit from "express-rate-limit"
 import * as helmet from "helmet"
 import * as nocache from "nocache"
-import { join } from "path"
+import { resolve } from "path"
 
 import { AppModule } from "./app.module"
 import { ConfigService } from "@nestjs/config"
@@ -50,7 +50,7 @@ export async function bootstrap() {
   )
 
   app.useGlobalPipes(new ValidationPipe())
-  app.useStaticAssets(join(__dirname, "..", "resources"))
+  app.useStaticAssets(resolve(__dirname, "..", "resources"))
 
   /*
   |--------------------------------------------------------------------------
