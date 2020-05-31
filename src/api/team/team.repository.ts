@@ -11,6 +11,9 @@ export class TeamRepository extends Repository<Team> {
       where: {
         tournament,
       },
+      order: {
+        createdAt:  "ASC"
+      }
     })
     return teams
   }

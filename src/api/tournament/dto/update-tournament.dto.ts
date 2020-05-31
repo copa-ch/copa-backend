@@ -3,10 +3,10 @@ import { IsIn } from "class-validator"
 import { TournamentState } from "../tournament-state"
 
 export class UpdateTournamentDto {
-  @ApiProperty()
+  @ApiProperty({ example: "Avengers Cup" })
   name?: string
 
-  @ApiProperty()
+  @ApiProperty({ example: "Tony Stark" })
   owner?: string
 
   @IsIn(Object.values(TournamentState))

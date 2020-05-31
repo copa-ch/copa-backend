@@ -14,7 +14,5 @@ define(Tournament, (faker: typeof Faker) => {
   tournament.name = `${name.charAt(0).toUpperCase()}${name.slice(1)}`
   tournament.owner = `${firstName} ${lastName}`
   tournament.state = TournamentState.Open
-  tournament.adminId = shortid.generate()
-  tournament.visitorId = shortid.generate()
   return tournament
 })

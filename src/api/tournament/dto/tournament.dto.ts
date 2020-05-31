@@ -4,16 +4,14 @@ import { TournamentState } from "../tournament-state"
 
 @Exclude()
 export class TournamentDto {
-  @Expose()
-  @ApiProperty()
   readonly id: string
 
   @Expose()
-  @ApiProperty()
+  @ApiProperty({ example: "Avengers Cup" })
   readonly name: string
 
   @Expose()
-  @ApiProperty()
+  @ApiProperty({ example: "Tony Stark" })
   readonly owner: string
 
   @Expose()
@@ -21,6 +19,6 @@ export class TournamentDto {
   readonly state: TournamentState
 
   @Expose()
-  @ApiProperty()
+  @ApiProperty({ example: "hash" })
   readonly visitorId: string
 }

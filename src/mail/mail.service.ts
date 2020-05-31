@@ -13,11 +13,6 @@ export class MailService {
     private readonly configService: ConfigService,
     private readonly templateService: TemplateService,
   ) {
-    console.log(configService.get("mail.host"))
-    console.log(configService.get("mail.port"))
-    console.log(configService.get("mail.username"))
-    console.log(configService.get("mail.password"))
-    console.log(process.env.MAIL_USERNAME)
     this.transporter = createTransport({
       host: configService.get("mail.host"),
       port: configService.get("mail.port"),

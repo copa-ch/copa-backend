@@ -1,5 +1,5 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm"
-
+import * as shortid from "shortid"
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn, BeforeInsert } from "typeorm"
 import { DateAudit } from "../shared/entity/date-audit.entity"
 import { Game } from "../game/game.entity"
 import { Team } from "../team/team.entity"
@@ -39,4 +39,10 @@ export class Tournament extends DateAudit {
     team => team.tournament,
   )
   teams: Team[]
+
+  @BeforeInsert()
+  async setShortIds(): Promise<void> {
+    this.visitorId = shortid.generate()
+    this.adminId = shortid.generate()
+  }
 }

@@ -1,9 +1,10 @@
 import { Controller, Get } from "@nestjs/common"
-import { ApiOperation, ApiTags } from "@nestjs/swagger"
+import { ApiOperation, ApiTags, ApiResponse } from "@nestjs/swagger"
 import { ConfigService } from "@nestjs/config"
+import { APIInformationDto } from "./api-information.dto"
 
 @Controller("")
-@ApiTags("meta")
+@ApiTags("API Information")
 export class APIController {
   constructor(private config: ConfigService) {}
 
@@ -11,6 +12,11 @@ export class APIController {
   @ApiOperation({
     summary: "API Meta data",
     description: "Returns the name, description and the version of the api.",
+  })
+  @ApiResponse({
+    status: 200,
+    description: "Successful created new tournament",
+    type: APIInformationDto,
   })
   main() {
     return {

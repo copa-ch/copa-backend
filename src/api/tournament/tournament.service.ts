@@ -47,8 +47,6 @@ export class TournamentService {
     tournament.name = createTournamentDto.name
     tournament.owner = createTournamentDto.owner
     tournament.state = TournamentState.Open
-    tournament.visitorId = shortid.generate()
-    tournament.adminId = shortid.generate()
     const createdTournament = await this.tournamentRepository.save(tournament)
     await this.mailService.send(
       new TournamentCreatedMail(
