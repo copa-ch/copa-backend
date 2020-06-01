@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/copa-ch/copa-backend/compare/v1.2.0...v1.3.0) (2020-06-01)
+
+
+### Features
+
+* **games:** auto generate games after team manipulation ([f32258d](https://github.com/copa-ch/copa-backend/commit/f32258db3105feaf22eb9cc106f1aa3410530c5b))
+
 # [1.2.0](https://github.com/copa-ch/copa-backend/compare/v1.1.0...v1.2.0) (2020-06-01)
 
 
