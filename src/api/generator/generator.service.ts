@@ -18,9 +18,8 @@ export class GeneratorService {
     private readonly teamService: TeamService,
   ) {}
 
-  @Transaction()
   async generateGames(tournament: Tournament): Promise<Game[]> {
-    if (tournament.state !== TournamentState.Planable) {
+    if (tournament.state !== TournamentState.Open) {
       throw new IlegalTournamentStateException(
         "A schedule can only be generaten during the open state of the Tournament",
       )

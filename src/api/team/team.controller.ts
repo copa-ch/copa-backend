@@ -17,6 +17,9 @@ import { Roles } from "../guard/roles.decorator"
 import { CreateTeamDto } from "./dto/create-team.dto"
 import { TeamDto } from "./dto/team.dto"
 import { UpdateTeamDto } from "./dto/update-team.dto"
+import { GeneratorService } from "../generator/generator.service"
+import { GameService } from "../game/game.service"
+import { Tournament } from "../tournament/tournament.entity"
 
 @Controller("tournament/:hash/team")
 @ApiTags("team")
@@ -26,6 +29,8 @@ export class TeamController {
   constructor(
     private readonly tournamentService: TournamentService,
     private readonly teamService: TeamService,
+    private readonly generatorService: GeneratorService,
+    private readonly gameService: GameService,
   ) {}
 
   @Post()
@@ -37,6 +42,7 @@ export class TeamController {
   ): Promise<TeamDto> {
     const tournament = await this.tournamentService.findOneByHashOrFail(hash)
     const team = await this.teamService.create(tournament, createTeamDto)
+    await this.regenerateGames(tournament)
     return plainToClass(TeamDto, team)
   }
 
@@ -46,7 +52,7 @@ export class TeamController {
   async findAll(@Param("hash") hash: string): Promise<TeamDto[]> {
     const tournament = await this.tournamentService.findOneByHashOrFail(hash)
     const teams = await this.teamService.findAll(tournament)
-    return teams.map(t => plainToClass(TeamDto, t))
+    return teams.map((t) => plainToClass(TeamDto, t))
   }
 
   @Get(":id")
@@ -70,6 +76,7 @@ export class TeamController {
     if (!team) {
       throw new NotFoundException()
     }
+    await this.regenerateGames(tournament)
     return plainToClass(TeamDto, team)
   }
 
@@ -81,6 +88,13 @@ export class TeamController {
     @Param("id") id: string,
   ): Promise<void> {
     const tournament = await this.tournamentService.findOneByHashOrFail(hash)
-    this.teamService.delete(tournament, id)
+    await this.teamService.delete(tournament, id)
+    await this.regenerateGames(tournament)
+  }
+
+  async regenerateGames(tournament: Tournament) {
+    await this.gameService.removeAll(tournament)
+    const games = await this.generatorService.generateGames(tournament)
+    await this.gameService.create(tournament, games)
   }
 }

@@ -69,12 +69,6 @@ export class TournamentService {
     ) {
       if (
         tournament.state === TournamentState.Open &&
-        updateTournamentDto.state !== TournamentState.Planable
-      ) {
-        throw new IlegalTournamentStateException("Illegal state change")
-      }
-      if (
-        tournament.state === TournamentState.Planable &&
         updateTournamentDto.state !== TournamentState.Playable
       ) {
         throw new IlegalTournamentStateException("Illegal state change")
