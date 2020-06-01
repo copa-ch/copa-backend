@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/copa-ch/copa-backend/compare/v1.1.0...v1.2.0) (2020-06-01)
+
+
+### Features
+
+* add new state planable ([2300ec5](https://github.com/copa-ch/copa-backend/commit/2300ec57e6b6c5a65e7ece437c1e3c6d9bad627a))
+
 # [1.1.0](https://github.com/copa-ch/copa-backend/compare/v1.0.1...v1.1.0) (2020-05-31)
 
 
