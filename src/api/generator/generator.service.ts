@@ -19,9 +19,12 @@ export class GeneratorService {
   ) {}
 
   async generateGames(tournament: Tournament): Promise<Game[]> {
-    if (tournament.state !== TournamentState.Open) {
+    if (
+      tournament.state !== TournamentState.Open &&
+      tournament.state !== TournamentState.Playable
+    ) {
       throw new IlegalTournamentStateException(
-        "A schedule can only be generaten during the open state of the Tournament",
+        "A schedule can only be generaten during the open or playable state of the Tournament",
       )
     }
     this.logger.log(`generate(tournament.id=${tournament.id}`)
@@ -32,8 +35,8 @@ export class GeneratorService {
       numberOfTeams: teams.length,
     })
     const games = []
-    paringTable.rounds.forEach(round => {
-      round.fixtures.forEach(fixture => {
+    paringTable.rounds.forEach((round) => {
+      round.fixtures.forEach((fixture) => {
         const game = new Game()
         game.tournament = tournament
         game.round = round.index + 1
