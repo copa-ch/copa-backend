@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/copa-ch/copa-backend/compare/v1.3.1...v1.4.0) (2020-08-03)
+
+
+### Features
+
+* **ranking:** add goal diff ([3436415](https://github.com/copa-ch/copa-backend/commit/343641525e201e14a53d15a1bb2d18f30c9e8319))
+
 ## [1.3.1](https://github.com/copa-ch/copa-backend/compare/v1.3.0...v1.3.1) (2020-06-16)
 
 
