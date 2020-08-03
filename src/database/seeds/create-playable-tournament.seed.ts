@@ -11,13 +11,13 @@ export class CreatePlayableTournament implements Seeder {
         t.state = TournamentState.Playable
         return t
       })
-      .seed()
+      .create()
     const teams = await factory(Team)()
       .map(async team => {
         team.tournament = tournament
         return team
       })
-      .seedMany(4)
+      .createMany(4)
 
     const gamePlans = [
       [1, 0, 1],
@@ -37,7 +37,7 @@ export class CreatePlayableTournament implements Seeder {
           game.guest = teams[plan[2]]
           return game
         })
-        .seed()
+        .create()
     }
   }
 }
