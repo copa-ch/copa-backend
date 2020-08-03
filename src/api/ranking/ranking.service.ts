@@ -19,39 +19,42 @@ export class RankingService {
     const teams = await this.teamService.findAll(tournament)
     const games = await this.gameService.findAll(tournament)
     return teams
-      .map(team => new Ranking(team))
-      .map(ranking => {
-        const hostGames = games.filter(game => game.host.id === ranking.team.id)
+      .map((team) => new Ranking(team))
+      .map((ranking) => {
+        const hostGames = games.filter(
+          (game) => game.host.id === ranking.team.id && game.wasPlayed(),
+        )
         const guestGames = games.filter(
-          game => game.guest.id === ranking.team.id,
+          (game) => game.guest.id === ranking.team.id && game.wasPlayed(),
         )
         ranking.played = hostGames.length + guestGames.length
 
-        const hostWins = hostGames.filter(g => g.didHostWin()).length
-        const guestWins = guestGames.filter(g => g.didGuestWin()).length
+        const hostWins = hostGames.filter((g) => g.didHostWin()).length
+        const guestWins = guestGames.filter((g) => g.didGuestWin()).length
         const draws =
-          hostGames.filter(g => g.isADraw()).length +
-          guestGames.filter(g => g.isADraw()).length
+          hostGames.filter((g) => g.isADraw()).length +
+          guestGames.filter((g) => g.isADraw()).length
         ranking.won = hostWins + guestWins
         ranking.drawn = draws
         ranking.lost = ranking.played - ranking.won - ranking.drawn
         ranking.points = ranking.won * 3 + ranking.drawn
 
         const hostGoals = hostGames
-          .map(g => g.hostScore)
+          .map((g) => g.hostScore)
           .reduce((acc, score) => acc + score, 0)
         const guestGoals = guestGames
-          .map(g => g.guestScore)
+          .map((g) => g.guestScore)
           .reduce((acc, score) => acc + score, 0)
         ranking.goals = hostGoals + guestGoals
 
         const hostGoalsAgainst = hostGames
-          .map(g => g.guestScore)
+          .map((g) => g.guestScore)
           .reduce((acc, score) => acc + score, 0)
         const guestGoalsAgainst = guestGames
-          .map(g => g.hostScore)
+          .map((g) => g.hostScore)
           .reduce((acc, score) => acc + score, 0)
         ranking.goalsAgainst = hostGoalsAgainst + guestGoalsAgainst
+        ranking.goalsDifference = ranking.goals - ranking.goalsAgainst
         return ranking
       })
       .sort((a, b) => a.compare(b))

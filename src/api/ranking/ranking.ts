@@ -8,6 +8,7 @@ export class Ranking {
   lost: number
   goals: number
   goalsAgainst: number
+  goalsDifference: number
   points: number
 
   constructor(public team: Team) {
@@ -18,6 +19,7 @@ export class Ranking {
     this.lost = 0
     this.goals = 0
     this.goalsAgainst = 0
+    this.goalsDifference = 0
     this.points = 0
   }
 
