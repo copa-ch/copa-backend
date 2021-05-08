@@ -60,7 +60,7 @@
     "rimraf": "^3.0.2",
     "shortid": "^2.2.15",
     "swagger-ui-express": "^4.1.4",
-    "typeorm": "^0.2.24",
+    "typeorm": "^0.2.25",
     "typeorm-seeding": "^1.5.0"
   },
   "devDependencies": {
