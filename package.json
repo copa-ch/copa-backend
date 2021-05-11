@@ -51,7 +51,7 @@
     "express-rate-limit": "^5.1.1",
     "handlebars": "^4.7.6",
     "helmet": "^3.22.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "nocache": "^2.1.0",
