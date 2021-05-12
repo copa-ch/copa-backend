@@ -55,7 +55,7 @@
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
     "nocache": "^2.1.0",
-    "nodemailer": "^6.4.6",
+    "nodemailer": "^6.4.16",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "shortid": "^2.2.15",
