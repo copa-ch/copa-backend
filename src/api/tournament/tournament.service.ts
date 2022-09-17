@@ -8,7 +8,7 @@ import { CreateTournamentDto } from "./dto/create-tournament.dto"
 import { TournamentState } from "./tournament-state"
 import { TournamentCreatedMail } from "./tournament-created.mail"
 import { UpdateTournamentDto } from "./dto/update-tournament.dto"
-import { IlegalTournamentStateException } from "../shared/error/ilegal-tournament-state.exception"
+import { IllegalTournamentStateException } from "../shared/error/illegal-tournament-state.exception"
 
 @Injectable()
 export class TournamentService {
@@ -71,16 +71,16 @@ export class TournamentService {
         tournament.state === TournamentState.Open &&
         updateTournamentDto.state !== TournamentState.Playable
       ) {
-        throw new IlegalTournamentStateException("Illegal state change")
+        throw new IllegalTournamentStateException("Illegal state change")
       }
       if (
         tournament.state === TournamentState.Playable &&
         updateTournamentDto.state !== TournamentState.Closed
       ) {
-        throw new IlegalTournamentStateException("Illegal state change")
+        throw new IllegalTournamentStateException("Illegal state change")
       }
       if (tournament.state === TournamentState.Closed) {
-        throw new IlegalTournamentStateException("Illegal state change")
+        throw new IllegalTournamentStateException("Illegal state change")
       }
     }
     tournament.name = updateTournamentDto.name || tournament.name

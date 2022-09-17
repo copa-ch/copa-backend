@@ -6,7 +6,7 @@ import { CreateTeamDto } from "./dto/create-team.dto"
 import { UpdateTeamDto } from "./dto/update-team.dto"
 import { TeamNameUniqueException } from "../shared/error/team-name-unique.exception"
 import { TournamentState } from "../tournament/tournament-state"
-import { IlegalTournamentStateException } from "../shared/error/ilegal-tournament-state.exception"
+import { IllegalTournamentStateException } from "../shared/error/illegal-tournament-state.exception"
 
 @Injectable()
 export class TeamService {
@@ -77,7 +77,7 @@ export class TeamService {
 
   private verifyTeamChange(tournament: Tournament) {
     if (tournament.state !== TournamentState.Open) {
-      throw new IlegalTournamentStateException(
+      throw new IllegalTournamentStateException(
         "Teams can only be changed during the Open state",
       )
     }

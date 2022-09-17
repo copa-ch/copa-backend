@@ -4,7 +4,7 @@ import { Tournament } from "../tournament/tournament.entity"
 import { Game } from "./game.entity"
 import { UpdateGameDto } from "./dto/update-game.dto"
 import { TournamentState } from "../tournament/tournament-state"
-import { IlegalTournamentStateException } from "../shared/error/ilegal-tournament-state.exception"
+import { IllegalTournamentStateException } from "../shared/error/illegal-tournament-state.exception"
 import { CreateGameDto } from "./dto/create-game.dto"
 import { Connection } from "typeorm"
 import { plainToClass } from "class-transformer"
@@ -33,7 +33,7 @@ export class GameService {
     tournament: Tournament,
     createGameDtos: CreateGameDto[],
   ): Promise<Game[]> {
-    const games = createGameDtos.map(g => {
+    const games = createGameDtos.map((g) => {
       const game = new Game()
       game.tournament = tournament
       game.round = g.round
@@ -81,7 +81,7 @@ export class GameService {
 
   private verifyChange(tournament: Tournament) {
     if (tournament.state !== TournamentState.Playable) {
-      throw new IlegalTournamentStateException(
+      throw new IllegalTournamentStateException(
         "Games can only be update during the Playable state",
       )
     }
