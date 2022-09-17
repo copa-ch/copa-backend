@@ -5,7 +5,7 @@ import { PairingTableService } from "./paring-table.service"
 import { Tournament } from "../tournament/tournament.entity"
 import { Game } from "../game/game.entity"
 import { TournamentState } from "../tournament/tournament-state"
-import { IlegalTournamentStateException } from "../shared/error/ilegal-tournament-state.exception"
+import { IllegalTournamentStateException } from "../shared/error/illegal-tournament-state.exception"
 import { Team } from "../team/team.entity"
 import { TeamService } from "../team/team.service"
 
@@ -23,7 +23,7 @@ export class GeneratorService {
       tournament.state !== TournamentState.Open &&
       tournament.state !== TournamentState.Playable
     ) {
-      throw new IlegalTournamentStateException(
+      throw new IllegalTournamentStateException(
         "A schedule can only be generaten during the open or playable state of the Tournament",
       )
     }

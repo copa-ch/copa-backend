@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus } from "@nestjs/common"
 
-export class IlegalTournamentStateException extends HttpException {
+export class IllegalTournamentStateException extends HttpException {
   constructor(message: string) {
     super(message, HttpStatus.BAD_REQUEST)
   }
